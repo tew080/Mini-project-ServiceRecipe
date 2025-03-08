@@ -8,6 +8,8 @@ List service name
 - UpdateFoodName
 - DeleteFoodName
 
-Is in /ServiceRecipe/ServiceRecipe/IService1.cs <br>
-      /ServiceRecipe/ServiceRecipe/Service1.svc.cs <br>
-      /ServiceRecipe/ServiceRecipe/Web.config
+# Is in Diretory
+
+/ServiceRecipe/ServiceRecipe/IService1.cs <br>
+/ServiceRecipe/ServiceRecipe/Service1.svc.cs <br>
+/ServiceRecipe/ServiceRecipe/Web.config
