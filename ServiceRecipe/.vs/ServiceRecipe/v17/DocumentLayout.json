@@ -1,0 +1,74 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thamm\\OneDrive\\Desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\ServiceRecipe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C5DFCCBE-ABC9-4BC7-A2B0-091ED672CFA6}|ServiceRecipe\\ServiceRecipe.csproj|c:\\users\\thamm\\onedrive\\desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\servicerecipe\\servicerecipe\\service1.svc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5DFCCBE-ABC9-4BC7-A2B0-091ED672CFA6}|ServiceRecipe\\ServiceRecipe.csproj|solutionrelative:servicerecipe\\service1.svc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5DFCCBE-ABC9-4BC7-A2B0-091ED672CFA6}|ServiceRecipe\\ServiceRecipe.csproj|c:\\users\\thamm\\onedrive\\desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\servicerecipe\\servicerecipe\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{C5DFCCBE-ABC9-4BC7-A2B0-091ED672CFA6}|ServiceRecipe\\ServiceRecipe.csproj|solutionrelative:servicerecipe\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5DFCCBE-ABC9-4BC7-A2B0-091ED672CFA6}|ServiceRecipe\\ServiceRecipe.csproj|c:\\users\\thamm\\onedrive\\desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\servicerecipe\\servicerecipe\\iservice1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5DFCCBE-ABC9-4BC7-A2B0-091ED672CFA6}|ServiceRecipe\\ServiceRecipe.csproj|solutionrelative:servicerecipe\\iservice1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IService1.cs",
+              "DocumentMoniker": "C:\\Users\\thamm\\OneDrive\\Desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\ServiceRecipe\\ServiceRecipe\\IService1.cs",
+              "RelativeDocumentMoniker": "ServiceRecipe\\IService1.cs",
+              "ToolTip": "C:\\Users\\thamm\\OneDrive\\Desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\ServiceRecipe\\ServiceRecipe\\IService1.cs",
+              "RelativeToolTip": "ServiceRecipe\\IService1.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T12:18:29.012Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Service1.svc.cs",
+              "DocumentMoniker": "C:\\Users\\thamm\\OneDrive\\Desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\ServiceRecipe\\ServiceRecipe\\Service1.svc.cs",
+              "RelativeDocumentMoniker": "ServiceRecipe\\Service1.svc.cs",
+              "ToolTip": "C:\\Users\\thamm\\OneDrive\\Desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\ServiceRecipe\\ServiceRecipe\\Service1.svc.cs",
+              "RelativeToolTip": "ServiceRecipe\\Service1.svc.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAmwDUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T12:18:10.129Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\thamm\\OneDrive\\Desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\ServiceRecipe\\ServiceRecipe\\Web.config",
+              "RelativeDocumentMoniker": "ServiceRecipe\\Web.config",
+              "ToolTip": "C:\\Users\\thamm\\OneDrive\\Desktop\\\u0E40\u0E27\u0E47\u0E1B\u0E40\u0E0B\u0E2D\u0E23\u0E4C\u0E27\u0E34\u0E2A\\ServiceRecipe\\ServiceRecipe\\Web.config",
+              "RelativeToolTip": "ServiceRecipe\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-03-05T12:18:35.378Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
