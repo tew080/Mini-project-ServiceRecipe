@@ -16,7 +16,7 @@ namespace ServiceRecipe
     public class Service1 : IService1
     {
         //เชือมต่อฐานข้อมูล
-        private string connect = "server=localhost; database=testrecipe; user=root;password=;";
+        private string connect = "server=localhost; database=wikifood; user=root;password=;";
 
         //แสดงชื่อเมนูทั้งหมดโดยเรียงจาก a-z ก-ฮ
         // รับจาก  return FoodName
