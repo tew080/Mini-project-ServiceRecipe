@@ -28,7 +28,7 @@ namespace ServiceRecipe
             using (MySqlConnection conn = new MySqlConnection(connect))
             {
                 conn.Open();
-                string query = "SELECT foodname FROM listrecipe ORDER BY foodname COLLATE utf8_thai_520_w2";
+                string query = "SELECT foodname FROM wikifoods ORDER BY foodname COLLATE utf8_thai_520_w2";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
 
                 //ExecuteReader อ่านข้อมูลออกมา
@@ -58,7 +58,7 @@ namespace ServiceRecipe
             {
                 // โชว์ข้อมูลของ foodname
                 conn.Open();
-                string query = "SELECT * FROM listrecipe where FoodName=@foodname";
+                string query = "SELECT * FROM wikifoods where FoodName=@foodname";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
 
@@ -88,7 +88,7 @@ namespace ServiceRecipe
             {
                 //คำัส่งในการเพิ่มข้อมูล
                 conn.Open();
-                string query = "INSERT INTO listrecipe (foodname, raw_material, recipe) VALUES (@foodname, @raw_material, @recipe)";
+                string query = "INSERT INTO wikifoods (foodname, raw_material, recipe) VALUES (@foodname, @raw_material, @recipe)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -126,7 +126,7 @@ namespace ServiceRecipe
             {
                 //คำัส่งในการเพิ่มข้อมูล
                 conn.Open();
-                string query = "DELETE FROM listrecipe WHERE foodname =@foodname";
+                string query = "DELETE FROM wikifoods WHERE foodname =@foodname";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
