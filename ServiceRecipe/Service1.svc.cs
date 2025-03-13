@@ -107,7 +107,7 @@ namespace ServiceRecipe
             {
                 //คำัส่งในการเพิ่มข้อมูล
                 conn.Open();
-                string query = "UPDATE listrecipe SET foodname=@foodname ,raw_material=@raw_material,recipe=@recipe WHERE foodname =@foodname";
+                string query = "UPDATE wikifoods SET foodname=@foodname ,raw_material=@raw_material,recipe=@recipe WHERE foodname =@foodname";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
