@@ -8,36 +8,36 @@ using System.Text;
 
 namespace ServiceRecipe
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IService1
     {
         [OperationContract]
-        List<GetAllFoodName> GetAllFoodName();
+        List<GetAll> GetAllFood();
 
         [OperationContract]
-        Recipes SearchFoodName(string inputfoodname);
+        SearchAndUpdate SearchFoodName(string input_foodname);
 
         [OperationContract]
-        void AddFoodName(Recipes addfoodname);
+        void AddDataFood(AddData add_data_food);
 
         [OperationContract]
-        void UpdateFoodName(Recipes updatefoodname);
+        void UpdateDataFood(SearchAndUpdate update_data_food);
 
         [OperationContract]
-        void DeleteFoodName(RecipesDelete foodname);
+        void DeleteDataFood(DeleteData delete_data_food);
 
-        // TODO: Add your service operations here
     }
 
-    public class GetAllFoodName
+    public class GetAll
     {
+        [DataMember]
+        public int FoodID { get; set; }
 
         [DataMember]
         public string FoodName { get; set; }
     }
 
-    public class Recipes
+    public class AddData
     {
 
         [DataMember]
@@ -50,7 +50,23 @@ namespace ServiceRecipe
         public string Recipe { get; set; }
     }
 
-    public class RecipesDelete
+    public class SearchAndUpdate
+    {
+
+        [DataMember]
+        public int FoodID { get; set; }
+
+        [DataMember]
+        public string FoodName { get; set; }
+
+        [DataMember]
+        public string RawMaterial { get; set; }
+
+        [DataMember]
+        public string Recipe { get; set; }
+    }
+
+    public class DeleteData
     {
 
         [DataMember]

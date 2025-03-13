@@ -11,8 +11,6 @@ using MySql.Data.MySqlClient;
 
 namespace ServiceRecipe
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
         //เชือมต่อฐานข้อมูล
@@ -20,15 +18,15 @@ namespace ServiceRecipe
 
         //แสดงชื่อเมนูทั้งหมดโดยเรียงจาก a-z ก-ฮ
         // รับจาก  return FoodName
-        public List<GetAllFoodName> GetAllFoodName()
+        public List<GetAll> GetAllFood()
         {
             //ตัวแปรใช้ในการเก็บค่า
-            List<GetAllFoodName> FoodNames = new List<GetAllFoodName>();
+            List<GetAll> FoodNames = new List<GetAll>();
 
             using (MySqlConnection conn = new MySqlConnection(connect))
             {
                 conn.Open();
-                string query = "SELECT foodname FROM wikifoods ORDER BY foodname COLLATE utf8_thai_520_w2";
+                string query = "SELECT food_name, food_id FROM wikifoods ORDER BY food_name COLLATE utf8_thai_520_w2";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
 
                 //ExecuteReader อ่านข้อมูลออกมา
@@ -37,39 +35,41 @@ namespace ServiceRecipe
                     //อ่านข้อมูลที่ละแถว
                     while (reader.Read())
                     {
-                        FoodNames.Add(new GetAllFoodName
+                        FoodNames.Add(new GetAll
                         {
-                            FoodName = reader.GetString("foodname"),
+                            FoodID = reader.GetInt32("food_id"),
+                            FoodName = reader.GetString("food_name"),
                         });
                     }
                 }
             }
 
-            // ส่งค่าไป List<GetAllFoodName>
+            // ส่งค่าไป List<GetAll>
             return FoodNames;
         }
 
-        //ค้นหาวัตถุดิบและวิธีการจากชื่อ
-        public Recipes SearchFoodName(string inputfoodname)
+        //ค้นหาวัตถุดิบและวิธีการ จากชื่อ หรือ idเมนู
+        public SearchAndUpdate SearchFoodName(string input_foodname)
         {
-            Recipes foodnames = null;
+            SearchAndUpdate foodnames = null;
 
             using (MySqlConnection conn = new MySqlConnection(connect))
             {
-                // โชว์ข้อมูลของ foodname
                 conn.Open();
-                string query = "SELECT * FROM wikifoods where FoodName=@foodname";
+                string query = "SELECT * FROM wikifoods where food_name=@foodname OR food_id=@foodid";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
 
-                    cmd.Parameters.AddWithValue("@foodname", inputfoodname);
+                    cmd.Parameters.AddWithValue("@foodname", input_foodname);
+                    cmd.Parameters.AddWithValue("@foodid", input_foodname);
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            foodnames = new Recipes
+                            foodnames = new SearchAndUpdate
                             {
-                                FoodName = reader.GetString("FoodName"),
+                                FoodID = reader.GetInt32("food_id"),
+                                FoodName = reader.GetString("food_name"),
                                 RawMaterial = reader.GetString("raw_material"),
                                 Recipe = reader.GetString("recipe")
 
@@ -81,56 +81,58 @@ namespace ServiceRecipe
             return foodnames;
         }
 
-        //เพิ่มชื่อแกง-วัตุถุดิบ-วิธีการทำ
-        public void AddFoodName(Recipes addfoodname)
+        //เพิ่มข้อมูล ชื้อเมนู วัตถุดิบ วิธีทำ และจะสร้าง idเมนูอัตโนมัต
+        public void AddDataFood(AddData add_data_food)
         {
             using (MySqlConnection conn = new MySqlConnection(connect))
             {
                 //คำัส่งในการเพิ่มข้อมูล
                 conn.Open();
-                string query = "INSERT INTO wikifoods (foodname, raw_material, recipe) VALUES (@foodname, @raw_material, @recipe)";
+                string query = "INSERT INTO wikifoods (food_name, raw_material, recipe) VALUES (@foodname, @rawmaterial, @recipe)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@foodname", addfoodname.FoodName);
-                    cmd.Parameters.AddWithValue("@raw_material", addfoodname.RawMaterial);
-                    cmd.Parameters.AddWithValue("@recipe", addfoodname.Recipe);
+                    cmd.Parameters.AddWithValue("@foodname", add_data_food.FoodName);
+                    cmd.Parameters.AddWithValue("@rawmaterial", add_data_food.RawMaterial);
+                    cmd.Parameters.AddWithValue("@recipe", add_data_food.Recipe);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        //อัพเดทข้องมูลของวัตถุดิบ-วิธีทำ
-        public void UpdateFoodName(Recipes updatefoodname)
+        //อัพเดทข้องมูลโดยการใช้ idเมนูเพื่อระบุเมนูที่ต้องการแก้ไข
+        public void UpdateDataFood(SearchAndUpdate update_data_food)
         {
             using (MySqlConnection conn = new MySqlConnection(connect))
             {
                 //คำัส่งในการเพิ่มข้อมูล
                 conn.Open();
-                string query = "UPDATE wikifoods SET foodname=@foodname ,raw_material=@raw_material,recipe=@recipe WHERE foodname =@foodname";
+                string query = "UPDATE wikifoods SET food_name=@foodname, raw_material=@raw_material, recipe=@recipe WHERE food_id=@foodid";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@foodname", updatefoodname.FoodName);
-                    cmd.Parameters.AddWithValue("@raw_material", updatefoodname.RawMaterial);
-                    cmd.Parameters.AddWithValue("@recipe", updatefoodname.Recipe);
+                    cmd.Parameters.AddWithValue("@foodid", update_data_food.FoodID);
+                    cmd.Parameters.AddWithValue("@foodname", update_data_food.FoodName);
+                    cmd.Parameters.AddWithValue("@raw_material", update_data_food.RawMaterial);
+                    cmd.Parameters.AddWithValue("@recipe", update_data_food.Recipe);
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        //ลบเมนูที่ไม่ต้องการ
-        public void DeleteFoodName(RecipesDelete deletefoodname)
+        //ลบข้อมูลโดยการป้อนชื่ออาหาร
+        public void DeleteDataFood(DeleteData delete_data_food)
         {
+
             using (MySqlConnection conn = new MySqlConnection(connect))
             {
-                //คำัส่งในการเพิ่มข้อมูล
+                //คำัส่งในการลบข้อมูล
                 conn.Open();
-                string query = "DELETE FROM wikifoods WHERE foodname =@foodname";
+                string query = "DELETE FROM wikifoods WHERE food_name=@foodname";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@foodname", deletefoodname.FoodName);
+                    cmd.Parameters.AddWithValue("@foodname", delete_data_food.FoodName);
                     cmd.ExecuteNonQuery();
                 }
             }
