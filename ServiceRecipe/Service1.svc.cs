@@ -14,16 +14,16 @@ namespace ServiceRecipe
     public class Service1 : IService1
     {
         //เชือมต่อฐานข้อมูล
-        private string connect = "server=localhost; database=wikifood; user=root;password=;";
+        private string connectdatabase = "server=localhost; database=wikifood; user=root; password=;";
 
-        //แสดงชื่อเมนูทั้งหมดโดยเรียงจาก a-z ก-ฮ
+//แสดงชื่อเมนูทั้งหมดโดยเรียงจาก a-z ก-ฮ
         // รับจาก  return FoodName
-        public List<GetAll> GetAllFood()
+        public List<ShowAll> ShowAllFoods()
         {
             //ตัวแปรใช้ในการเก็บค่า
-            List<GetAll> FoodNames = new List<GetAll>();
+            List<ShowAll> FoodNames = new List<ShowAll>();
 
-            using (MySqlConnection conn = new MySqlConnection(connect))
+            using (MySqlConnection conn = new MySqlConnection(connectdatabase))
             {
                 conn.Open();
                 string query = "SELECT food_name, food_id FROM wikifoods ORDER BY food_name COLLATE utf8_thai_520_w2";
@@ -35,7 +35,7 @@ namespace ServiceRecipe
                     //อ่านข้อมูลที่ละแถว
                     while (reader.Read())
                     {
-                        FoodNames.Add(new GetAll
+                        FoodNames.Add(new ShowAll
                         {
                             FoodID = reader.GetInt32("food_id"),
                             FoodName = reader.GetString("food_name"),
@@ -47,13 +47,12 @@ namespace ServiceRecipe
             // ส่งค่าไป List<GetAll>
             return FoodNames;
         }
-
-        //ค้นหาวัตถุดิบและวิธีการ จากชื่อ หรือ idเมนู
+//ค้นหาวัตถุดิบและวิธีการ จากชื่อ หรือ idเมนู
         public SearchAndUpdate SearchFoodName(string input_foodname)
         {
             SearchAndUpdate foodnames = null;
 
-            using (MySqlConnection conn = new MySqlConnection(connect))
+            using (MySqlConnection conn = new MySqlConnection(connectdatabase))
             {
                 conn.Open();
                 string query = "SELECT * FROM wikifoods where food_name=@foodname OR food_id=@foodid";
@@ -80,11 +79,10 @@ namespace ServiceRecipe
             }
             return foodnames;
         }
-
-        //เพิ่มข้อมูล ชื้อเมนู วัตถุดิบ วิธีทำ และจะสร้าง idเมนูอัตโนมัต
+//เพิ่มข้อมูล ชื้อเมนู วัตถุดิบ วิธีทำ และจะสร้าง idเมนูอัตโนมัต
         public void AddDataFood(AddData add_data_food)
         {
-            using (MySqlConnection conn = new MySqlConnection(connect))
+            using (MySqlConnection conn = new MySqlConnection(connectdatabase))
             {
                 //คำัส่งในการเพิ่มข้อมูล
                 conn.Open();
@@ -99,11 +97,10 @@ namespace ServiceRecipe
                 }
             }
         }
-
-        //อัพเดทข้องมูลโดยการใช้ idเมนูเพื่อระบุเมนูที่ต้องการแก้ไข
+//อัพเดทข้องมูลโดยการใช้ idเมนูเพื่อระบุเมนูที่ต้องการแก้ไข
         public void UpdateDataFood(SearchAndUpdate update_data_food)
         {
-            using (MySqlConnection conn = new MySqlConnection(connect))
+            using (MySqlConnection conn = new MySqlConnection(connectdatabase))
             {
                 //คำัส่งในการเพิ่มข้อมูล
                 conn.Open();
@@ -119,12 +116,10 @@ namespace ServiceRecipe
                 }
             }
         }
-
-        //ลบข้อมูลโดยการป้อนชื่ออาหาร
+//ลบข้อมูลโดยการป้อนชื่ออาหาร
         public void DeleteDataFood(DeleteData delete_data_food)
         {
-
-            using (MySqlConnection conn = new MySqlConnection(connect))
+            using (MySqlConnection conn = new MySqlConnection(connectdatabase))
             {
                 //คำัส่งในการลบข้อมูล
                 conn.Open();

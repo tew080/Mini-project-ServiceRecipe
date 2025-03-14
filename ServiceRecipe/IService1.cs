@@ -12,7 +12,7 @@ namespace ServiceRecipe
     public interface IService1
     {
         [OperationContract]
-        List<GetAll> GetAllFood();
+        List<ShowAll>ShowAllFoods();
 
         [OperationContract]
         SearchAndUpdate SearchFoodName(string input_foodname);
@@ -25,10 +25,8 @@ namespace ServiceRecipe
 
         [OperationContract]
         void DeleteDataFood(DeleteData delete_data_food);
-
     }
-
-    public class GetAll
+    public class ShowAll
     {
         [DataMember]
         public int FoodID { get; set; }
@@ -36,10 +34,8 @@ namespace ServiceRecipe
         [DataMember]
         public string FoodName { get; set; }
     }
-
     public class AddData
     {
-
         [DataMember]
         public string FoodName { get; set; }
 
@@ -49,10 +45,8 @@ namespace ServiceRecipe
         [DataMember]
         public string Recipe { get; set; }
     }
-
     public class SearchAndUpdate
     {
-
         [DataMember]
         public int FoodID { get; set; }
 
@@ -65,12 +59,9 @@ namespace ServiceRecipe
         [DataMember]
         public string Recipe { get; set; }
     }
-
     public class DeleteData
     {
-
         [DataMember]
         public string FoodName { get; set; }
     }
-
 }
