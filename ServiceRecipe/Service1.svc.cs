@@ -43,7 +43,6 @@ namespace ServiceRecipe
                     }
                 }
             }
-
             // ส่งค่าไป List<GetAll>
             return FoodNames;
         }
@@ -91,8 +90,8 @@ namespace ServiceRecipe
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@foodname", add_data_food.FoodName);
-                    cmd.Parameters.AddWithValue("@rawmaterial", add_data_food.RawMaterial);
-                    cmd.Parameters.AddWithValue("@recipe", add_data_food.Recipe);
+                    cmd.Parameters.AddWithValue("@rawmaterial", add_data_food.RawMaterial.Replace("\r\n", "\n"));
+                    cmd.Parameters.AddWithValue("@recipe", add_data_food.Recipe.Replace("\r\n", "\n"));
                     cmd.ExecuteNonQuery();
                 }
             }
