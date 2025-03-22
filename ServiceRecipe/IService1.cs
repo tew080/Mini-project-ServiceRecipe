@@ -24,7 +24,7 @@ namespace ServiceRecipe
         void UpdateDataFood(SearchAndUpdate update_data_food);
 
         [OperationContract]
-        void DeleteDataFood(DeleteData delete_data_food);
+        bool DeleteDataFood(DeleteData delete_data_food);
     }
     public class ShowAll
     {

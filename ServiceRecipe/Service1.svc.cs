@@ -115,20 +115,33 @@ namespace ServiceRecipe
                 }
             }
         }
-//ลบข้อมูลโดยการป้อนชื่ออาหาร
-        public void DeleteDataFood(DeleteData delete_data_food)
+        //ลบข้อมูลโดยการป้อนชื่ออาหาร
+        public bool DeleteDataFood(DeleteData delete_data_food)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectdatabase))
+            try
             {
-                //คำัส่งในการลบข้อมูล
-                conn.Open();
-                string query = "DELETE FROM wikifoods WHERE food_name=@foodname";
-
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (MySqlConnection conn = new MySqlConnection(connectdatabase))
                 {
-                    cmd.Parameters.AddWithValue("@foodname", delete_data_food.FoodName);
-                    cmd.ExecuteNonQuery();
+
+                    //เริ่มเชื่อมต่อฐานข้อมูล
+                    conn.Open();
+                    string query = "DELETE FROM wikifoods WHERE food_name=@foodname";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@foodname", delete_data_food.FoodName);
+
+                        // ExecuteNonQuery() จะส่งคืนจำนวนแถวที่ได้รับผลกระทบ
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        // ถ้ามีการลบข้อมูลอย่างน้อย 1 แถว แสดงว่าลบสำเร็จ
+                        return rowsAffected > 0;
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
