@@ -63,5 +63,6 @@ namespace ServiceRecipe
     {
         [DataMember]
         public string FoodName { get; set; }
+
     }
 }

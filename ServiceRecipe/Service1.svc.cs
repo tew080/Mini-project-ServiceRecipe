@@ -109,8 +109,8 @@ namespace ServiceRecipe
                 {
                     cmd.Parameters.AddWithValue("@foodid", update_data_food.FoodID);
                     cmd.Parameters.AddWithValue("@foodname", update_data_food.FoodName);
-                    cmd.Parameters.AddWithValue("@raw_material", update_data_food.RawMaterial);
-                    cmd.Parameters.AddWithValue("@recipe", update_data_food.Recipe);
+                    cmd.Parameters.AddWithValue("@raw_material", update_data_food.RawMaterial.Replace("\r\n", "\n"));
+                    cmd.Parameters.AddWithValue("@recipe", update_data_food.Recipe.Replace("\r\n", "\n"));
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -130,7 +130,6 @@ namespace ServiceRecipe
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@foodname", delete_data_food.FoodName);
-
                         // ExecuteNonQuery() จะส่งคืนจำนวนแถวที่ได้รับผลกระทบ
                         int rowsAffected = cmd.ExecuteNonQuery();
 
